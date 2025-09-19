@@ -8,5 +8,8 @@ public class RouteConfig {
     public static void configureRoutes(Javalin app) {
         // Rubrica 3, item 1 -> Cliente para criar mensalista via API externa
         app.post("/mensalistas", MensalistaClientController::createMensalistaViaApi);
+        
+        // Rubrica 3, item 2 -> Cliente para listar mensalistas via API externa
+        app.get("/mensalistas", MensalistaClientController::getAllMensalistasViaApi);
     }
 }

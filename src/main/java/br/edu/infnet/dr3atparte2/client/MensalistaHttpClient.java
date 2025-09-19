@@ -48,4 +48,32 @@ public class MensalistaHttpClient {
             return null;
         }
     }
+
+    public String getAllMensalistas() {
+        try {
+            URL url = new URL(BASE_URL + "/mensalistas");
+
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Content-Type", "application/json");
+
+            int responseCode = connection.getResponseCode();
+            
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                String responseBody = new String(connection.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
+
+                System.out.println("--- ITEM 2 - LISTAGEM DE TODOS OS MENSALISTAS ---");
+                System.out.println(responseBody);
+                System.out.println("------------");
+                
+                return responseBody;
+            } else {
+                System.out.println("Erro na requisição GET. Status: " + responseCode);
+                return null;
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao fazer requisição GET: " + e.getMessage());
+            return null;
+        }
+    }
 }

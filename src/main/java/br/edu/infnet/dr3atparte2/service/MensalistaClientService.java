@@ -15,4 +15,8 @@ public class MensalistaClientService {
     public MensalistaResponseDto createMensalistaViaApi(MensalistaRequestDto request) {
         return httpClient.createMensalista(request);
     }
+
+    public String getAllMensalistasViaApi() {
+        return httpClient.getAllMensalistas();
+    }
 }

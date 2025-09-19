@@ -23,5 +23,6 @@ public class Dr3AtParte2Application {
         System.out.println("Servidor Javalin iniciado na porta: " + PORT);
         System.out.println("Endpoints Rubrica 3 - Cliente HTTP:");
         System.out.println("Item 1: http://localhost:" + PORT + "/mensalistas (POST)");
+        System.out.println("Item 2: http://localhost:" + PORT + "/mensalistas");
     }
 }
