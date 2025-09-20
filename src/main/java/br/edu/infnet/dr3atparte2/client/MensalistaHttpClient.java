@@ -40,7 +40,7 @@ public class MensalistaHttpClient {
                 String responseBody = new String(connection.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
                 return objectMapper.readValue(responseBody, MensalistaResponseDto.class);
             } else {
-                System.out.println("Erro na requisição. Status: " + responseCode);
+                System.out.println("Erro na requisição POST /mensalistas. Status: " + responseCode);
                 return null;
             }
         } catch (Exception e) {
@@ -68,7 +68,7 @@ public class MensalistaHttpClient {
                 
                 return responseBody;
             } else {
-                System.out.println("Erro na requisição GET. Status: " + responseCode);
+                System.out.println("Erro na requisição GET /mensalistas. Status: " + responseCode);
                 return null;
             }
         } catch (Exception e) {
@@ -96,7 +96,7 @@ public class MensalistaHttpClient {
                 
                 return responseBody;
             } else {
-                System.out.println("Erro na requisição GET com path param. Status: " + responseCode);
+                System.out.println("Erro na requisição GET /mensalistas/{matricula}. Status: " + responseCode);
                 return null;
             }
         } catch (Exception e) {
