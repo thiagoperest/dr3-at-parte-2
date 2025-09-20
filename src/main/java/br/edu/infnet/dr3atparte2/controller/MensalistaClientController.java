@@ -29,4 +29,15 @@ public class MensalistaClientController {
             ctx.status(500).json("{\"error\": \"Erro ao comunicar com API externa\"}");
         }
     }
+
+    public static void getMensalistaByMatriculaViaApi(Context ctx) {
+        String matricula = ctx.pathParam("matricula");
+        String response = mensalistaClientService.getMensalistaByMatriculaViaApi(matricula);
+        
+        if (response != null) {
+            ctx.status(200).result(response).header("Content-Type", "application/json");
+        } else {
+            ctx.status(500).json("{\"error\": \"Erro ao comunicar com API externa\"}");
+        }
+    }
 }

@@ -11,5 +11,8 @@ public class RouteConfig {
         
         // Rubrica 3, item 2 -> Cliente para listar mensalistas via API externa
         app.get("/mensalistas", MensalistaClientController::getAllMensalistasViaApi);
+        
+        // Rubrica 3, item 3 -> Cliente para buscar mensalista por matrícula via API externa
+        app.get("/mensalistas/{matricula}", MensalistaClientController::getMensalistaByMatriculaViaApi);
     }
 }

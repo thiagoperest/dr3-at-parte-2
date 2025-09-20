@@ -76,4 +76,32 @@ public class MensalistaHttpClient {
             return null;
         }
     }
+
+    public String getMensalistaByMatricula(String matricula) {
+        try {
+            URL url = new URL(BASE_URL + "/mensalistas/" + matricula);
+
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Content-Type", "application/json");
+
+            int responseCode = connection.getResponseCode();
+            
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                String responseBody = new String(connection.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
+
+                System.out.println("--- ITEM 3 - BUSCA DE MENSALISTA POR MATRÍCULA ---");
+                System.out.println(responseBody);
+                System.out.println("------------");
+                
+                return responseBody;
+            } else {
+                System.out.println("Erro na requisição GET com path param. Status: " + responseCode);
+                return null;
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao fazer requisição GET com path param: " + e.getMessage());
+            return null;
+        }
+    }
 }
