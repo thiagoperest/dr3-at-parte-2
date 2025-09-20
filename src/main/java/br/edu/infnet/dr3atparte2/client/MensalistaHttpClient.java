@@ -104,4 +104,32 @@ public class MensalistaHttpClient {
             return null;
         }
     }
+
+    public String getStatus() {
+        try {
+            URL url = new URL(BASE_URL + "/status");
+
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Content-Type", "application/json");
+
+            int responseCode = connection.getResponseCode();
+            
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                String responseBody = new String(connection.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
+
+                System.out.println("--- ITEM 4 - STATUS DO SISTEMA ---");
+                System.out.println(responseBody);
+                System.out.println("------------");
+                
+                return responseBody;
+            } else {
+                System.out.println("Erro na requisição GET /status. Status: " + responseCode);
+                return null;
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao fazer requisição GET /status: " + e.getMessage());
+            return null;
+        }
+    }
 }

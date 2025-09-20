@@ -23,4 +23,8 @@ public class MensalistaClientService {
     public String getMensalistaByMatriculaViaApi(String matricula) {
         return httpClient.getMensalistaByMatricula(matricula);
     }
+
+    public String getStatusViaApi() {
+        return httpClient.getStatus();
+    }
 }

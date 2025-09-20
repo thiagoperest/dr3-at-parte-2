@@ -40,4 +40,14 @@ public class MensalistaClientController {
             ctx.status(500).json("{\"error\": \"Erro ao comunicar com API externa\"}");
         }
     }
+
+    public static void getStatusViaApi(Context ctx) {
+        String response = mensalistaClientService.getStatusViaApi();
+        
+        if (response != null) {
+            ctx.status(200).result(response).header("Content-Type", "application/json");
+        } else {
+            ctx.status(500).json("{\"error\": \"Erro ao comunicar com API externa\"}");
+        }
+    }
 }
